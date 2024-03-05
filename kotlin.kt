@@ -1,15 +1,41 @@
 
 fun main(){
 
-    var p = Professor("jonas","rua 3")
 
-    println(p.descricao())
-
-    var a = Aluno("jonas","rua 1",12300)
-
-    println(a.descricao())
+    val musc = Guitarra("name")
+    musc.afinar()
 }
 
+
+
+abstract class Instrumento(var name:String){
+
+    abstract fun afinar()
+}
+
+
+class Guitarra(name:String):Instrumento(name){
+    override fun afinar() {
+        println("finar em E")
+    }
+
+}
+
+class Violoino(name:String):Instrumento(name){
+    override fun afinar() {
+        println("ifinar com C")
+    }
+
+}
+
+
+
+
+
+
+
+
+/*
 open class Pessoa(var nome:String, var enderoco:String){
      //  Protected -> somente class filha pode n pegar uma variavel protected
      //  Private -> somente as class atual poden acessar as propriedades
@@ -27,4 +53,4 @@ class Professor(nome :String , enderoco :String): Pessoa(nome, enderoco){
 
 class Aluno(nome :String , enderoco :String,var matriculaId:Int): Pessoa(nome, enderoco) {
 
-}
+}*/
