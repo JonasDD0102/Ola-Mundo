@@ -1,32 +1,62 @@
 
-fun main(){
+fun main() {
+
+    val kiko = Musico("Jonas")
+    val gabi = Musico("robert Carl")
+
+    val isntruA = Guitarra("guitara")
+    val isntruB = Violoino("Violino")
+
+    tocar(isntruA,kiko)
+    tocar(isntruB,gabi)
 
 
-    val musc = Guitarra("name")
-    musc.afinar()
+
+
+
+    }
+
+fun tocar(instrumento: Instrumento, musico: Musico){
+    instrumento.tocar(musico)
 }
 
+
+class Musico(var name: String)
 
 
 abstract class Instrumento(var name:String){
 
-    abstract fun afinar()
+    abstract fun afinar():Boolean
+
+
+    fun tocar(musico: Musico) {
+        if (afinar()) {
+            println("${musico.name} vc ja pode tocar o instrumento: $name ")
+        }else{
+            println("vc ainda nao afinou a/o $name")
+
+        }    }
+    }
+
+abstract class InstrumentoDeCorda(name:String):Instrumento(name){
+
 }
 
-
-class Guitarra(name:String):Instrumento(name){
-    override fun afinar() {
-        println("finar em E")
+class Guitarra(name:String):InstrumentoDeCorda(name){
+    override fun afinar():Boolean {
+       return false
     }
 
 }
 
 class Violoino(name:String):Instrumento(name){
-    override fun afinar() {
+    override fun afinar():Boolean {
         println("ifinar com C")
+        return true
     }
 
 }
+
 
 
 
