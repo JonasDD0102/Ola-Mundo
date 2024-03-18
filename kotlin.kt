@@ -1,72 +1,79 @@
+import android.text.style.BackgroundColorSpan
+import android.webkit.WebView.HitTestResult
 
 fun main() {
 
-val nicole = Mussico("Nicole")
-val pericles = Mussico("Pericles")
-val roberto = Mussico("RobertoCarlos")
-
-
-val musc1 = Guitarra("Guitarra",5)
-val musc2 = Flauta("Flauta")
-val musc3 = Violino("violino",5)
-
-
-tocar(musc1,nicole)
-tocar(musc2,pericles)
-tocar(musc3,roberto)
-
-
-
-
+    val btn = Button("Ligar",454545, Pair(20,40))
+    btn.render()
+    val url = Link("live",Pair(50,59))
+    url.render()
 }
+abstract class Component{
+    abstract fun position() : Pair<Int,Int>
 
-fun tocar(instrumento: Instrumento, mussico: Mussico){
-    instrumento.tocar(mussico)
-}
-
-class Mussico(var nome:String)
-
-
-abstract class Instrumento(var nome: String){
-
-    abstract fun afinar() : Boolean
-
-    fun tocar(mussico: Mussico){
-        if (afinar()){
-            println(" o instrumento $nome esta sendo tocado ${mussico.nome}")
-        }else{
-            println("Por favor ${mussico.nome}  afine seu instrumento")
-        }
+    open fun render(){
+        println("desenhando na tela ${position().first} | ${position().second}")
     }
 }
 
-abstract class InstrumnetoDeCordas(nome:String,var cordas:Int):Instrumento(nome){
+abstract class Text(val text:String): Component() {
+    override fun render() {
+        super.render()
+        println("desenhado o texto $text")
+    }
+}
 
+class Button( text :String , val backgroundColor :Int, val pos :Pair<Int,Int>) :Text(text){
+    override fun position(): Pair<Int, Int> {
+        return pos
     }
 
+    override fun render() {
+        super.render()
+        println("desenhado o button na cor  -> $backgroundColor")
+    }
+}
 
-class Flauta(nome:String):Instrumento(nome){
-    override fun afinar(): Boolean {
-        println("afinar em c")
-        return true
+class Link(text:String , val pos : Pair<Int,Int>):Text(text){
+    override fun position(): Pair<Int, Int> {
+        return pos
     }
 
 }
 
-class Violino(nome:String, cordas: Int):InstrumnetoDeCordas(nome, cordas) {
-    override fun afinar(): Boolean {
-        println("afinar em d")
-        return true
-    }
 
-}
 
-class Guitarra(nome:String,cordas: Int):InstrumnetoDeCordas(nome, cordas){
-    override fun afinar(): Boolean {
-        return false
-    }
 
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
