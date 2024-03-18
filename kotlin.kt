@@ -1,68 +1,72 @@
 
 fun main() {
 
-    val kiko = Musico("Jonas")
-    val gabi = Musico("robert Carl")
-
-    val isntruA = Guitarra("guitara")
-    val isntruB = Violoino("Violino")
-
-    tocar(isntruA,kiko)
-    tocar(isntruB,gabi)
+val nicole = Mussico("Nicole")
+val pericles = Mussico("Pericles")
+val roberto = Mussico("RobertoCarlos")
 
 
+val musc1 = Guitarra("Guitarra",5)
+val musc2 = Flauta("Flauta")
+val musc3 = Violino("violino",5)
+
+
+tocar(musc1,nicole)
+tocar(musc2,pericles)
+tocar(musc3,roberto)
 
 
 
-    }
 
-fun tocar(instrumento: Instrumento, musico: Musico){
-    instrumento.tocar(musico)
 }
 
+fun tocar(instrumento: Instrumento, mussico: Mussico){
+    instrumento.tocar(mussico)
+}
 
-class Musico(var name: String)
-
-
-abstract class Instrumento(var name:String){
-
-    abstract fun afinar():Boolean
+class Mussico(var nome:String)
 
 
-    fun tocar(musico: Musico) {
-        if (afinar()) {
-            println("${musico.name} vc ja pode tocar o instrumento: $name ")
+abstract class Instrumento(var nome: String){
+
+    abstract fun afinar() : Boolean
+
+    fun tocar(mussico: Mussico){
+        if (afinar()){
+            println(" o instrumento $nome esta sendo tocado ${mussico.nome}")
         }else{
-            println("vc ainda nao afinou a/o $name")
-
-        }    }
+            println("Por favor ${mussico.nome}  afine seu instrumento")
+        }
     }
-
-abstract class InstrumentoDeCorda(name:String):Instrumento(name){
-
 }
 
-class Guitarra(name:String):InstrumentoDeCorda(name){
-    override fun afinar():Boolean {
-       return false
+abstract class InstrumnetoDeCordas(nome:String,var cordas:Int):Instrumento(nome){
+
     }
 
-}
 
-class Violoino(name:String):Instrumento(name){
-    override fun afinar():Boolean {
-        println("ifinar com C")
+class Flauta(nome:String):Instrumento(nome){
+    override fun afinar(): Boolean {
+        println("afinar em c")
         return true
     }
 
 }
 
+class Violino(nome:String, cordas: Int):InstrumnetoDeCordas(nome, cordas) {
+    override fun afinar(): Boolean {
+        println("afinar em d")
+        return true
+    }
 
+}
 
+class Guitarra(nome:String,cordas: Int):InstrumnetoDeCordas(nome, cordas){
+    override fun afinar(): Boolean {
+        return false
+    }
 
-
-
-
+}
 
 
 /*
