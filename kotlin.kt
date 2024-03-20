@@ -22,7 +22,7 @@ fun main() {
 }
 
 
-data class Carro(val Cor :String , val ano :Int)
+ 
 
 
 
