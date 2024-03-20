@@ -3,45 +3,26 @@ import android.webkit.WebView.HitTestResult
 
 fun main() {
 
-    val btn = Button("Ligar",454545, Pair(20,40))
-    btn.render()
-    val url = Link("live",Pair(50,59))
-    url.render()
-}
-abstract class Component{
-    abstract fun position() : Pair<Int,Int>
+    val a  = mutableListOf("jonas","feliep", "oliveira")
+    val b =  listOf("karol","pamela")
 
-    open fun render(){
-        println("desenhando na tela ${position().first} | ${position().second}")
-    }
-}
+    b.filterTo(a ,{ it.contains("a") })
 
-abstract class Text(val text:String): Component() {
-    override fun render() {
-        super.render()
-        println("desenhado o texto $text")
-    }
-}
+ //     println(a)
 
-class Button( text :String , val backgroundColor :Int, val pos :Pair<Int,Int>) :Text(text){
-    override fun position(): Pair<Int, Int> {
-        return pos
-    }
+   val c = listOf("a","b")
+   val d = listOf("c","d")
 
-    override fun render() {
-        super.render()
-        println("desenhado o button na cor  -> $backgroundColor")
-    }
-}
+   val all = listOf(c , d)
 
-class Link(text:String , val pos : Pair<Int,Int>):Text(text){
-    override fun position(): Pair<Int, Int> {
-        return pos
-    }
+   println(all.flatten())
 
+
+   println()
 }
 
 
+data class Carro(val Cor :String , val ano :Int)
 
 
 
@@ -66,6 +47,7 @@ class Link(text:String , val pos : Pair<Int,Int>):Text(text){
 
 
 
+/*
 
 
 
@@ -76,6 +58,7 @@ class Link(text:String , val pos : Pair<Int,Int>):Text(text){
 
 
 
+*/
 /*
 open class Pessoa(var nome:String, var enderoco:String){
      //  Protected -> somente class filha pode n pegar uma variavel protected
